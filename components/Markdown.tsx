@@ -58,6 +58,6 @@ const Markdown = ({ children, images }: Props) => {
 	};
 
 	return <ReactMarkdown components={components}>{children}</ReactMarkdown>;
-}
+};
 
 export default Markdown;

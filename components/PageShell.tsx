@@ -50,7 +50,6 @@ export default function PageShell({ children, titlePrefix }: Props) {
 				<title>{titlePrefix} Blog.</title>
 				<meta name="theme-color" content="#808080" />
 				<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-				<link href="https://fonts.googleapis.com/css?family=Khand:400,600" rel="stylesheet" type="text/css" />
 				<meta property="og:url" content="https://sha.wn.zone{{ request.get_full_path }}" />
 				<meta property="og:locale" content="en_US" />
 				<meta property="og:site_name" content="sha.wn.zone" />
