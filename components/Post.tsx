@@ -50,7 +50,7 @@ const Post = ({ post, isPreview }: Props) => {
 	if (isPreview) {
 		content = (
 			<>
-				<Markdown>{post.excerpt}</Markdown>
+				<Markdown images={post.metadata.images}>{post.excerpt}</Markdown>
 				{post.excerpt !== post.content && (
 					<div
 						css={css`
@@ -58,14 +58,14 @@ const Post = ({ post, isPreview }: Props) => {
 						`}
 					>
 						<H4>
-							<A href={post.metadata.url}>Full post</A>
+							<A href={post.metadata.url}>Full post &gt;</A>
 						</H4>
 					</div>
 				)}
 			</>
 		);
 	} else {
-		content = <Markdown>{post.content}</Markdown>;
+		content = <Markdown images={post.metadata.images}>{post.content}</Markdown>;
 	}
 
 	return (

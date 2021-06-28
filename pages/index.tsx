@@ -1,4 +1,4 @@
-import { GetStaticProps, InferGetStaticPropsType } from 'next';
+import { InferGetStaticPropsType } from 'next';
 
 import { getAllPosts } from '../lib/post';
 
@@ -6,7 +6,7 @@ import PageShell from '../components/PageShell';
 import Post from '../components/Post';
 
 export const getStaticProps = async () => {
-	const posts = getAllPosts();
+	const posts = await getAllPosts();
 
 	return {
 		props: {
