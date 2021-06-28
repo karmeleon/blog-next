@@ -33,6 +33,7 @@ export interface ImageMap {
 }
 
 const imageExtractionRegex = /!\[.*\]\((.*)\)/g;
+export const POSTS_PER_PAGE = 5;
 
 // TODO: maybe find a type for this?
 function excerptExtractor(markdown: string): string {
@@ -91,4 +92,19 @@ export async function getAllPosts() {
 	}
 
 	return posts.sort((post1, post2) => (post1.metadata.date > post2.metadata.date ? -1 : 1));
+}
+
+export async function getPostsForPage(page: number): Promise<Post[]> {
+	const allPosts = await getAllPosts();
+
+	return allPosts.slice(page * POSTS_PER_PAGE, (page + 1) * POSTS_PER_PAGE);
+}
+
+export function getTotalPosts(): number {
+	return getPostSlugs().length;
+}
+
+export function getTotalPages(): number {
+	const totalPosts = getTotalPosts();
+	return Math.ceil(totalPosts / POSTS_PER_PAGE);
 }
