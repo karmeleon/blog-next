@@ -12,6 +12,8 @@ export interface PostMetadata {
 	date: number;
 	url: string;
 	images: { [key: string]: Image };
+	// poor guy, maybe he needs to hit the gym and get a hobby
+	datelessSlug: string;
 }
 
 export interface Post {
@@ -65,8 +67,26 @@ export function getPostSlugs() {
 	return fs.readdirSync(postsDirectory);
 }
 
+export function getDatelessSlug(slug: string): string {
+	return slug.replace(/^(\d+)-(\d+)-(\d+)-/, '');
+}
+
+export async function getPostByDatelessSlug(searchSlug: string): Promise<Post> {
+	const slugs = getPostSlugs();
+
+	for (const slug of slugs) {
+		const realSlug = slug.replace(/\.md$/, '');
+		if (realSlug.endsWith(searchSlug)) {
+			return getPostBySlug(slug);
+		}
+	}
+	throw new Error(`Couldn't find a post for the dateless slug ${searchSlug}`);
+}
+
 export async function getPostBySlug(slug: string): Promise<Post> {
 	const realSlug = slug.replace(/\.md$/, '');
+	// the old site didn't have the date in the slugs, and I want to keep that SEO
+	const slugWithoutDate = getDatelessSlug(realSlug);
 	const fullPath = join(postsDirectory, `${realSlug}.md`);
 	const fileContents = fs.readFileSync(fullPath, 'utf8');
 	const { data, content } = matter(fileContents);
@@ -75,8 +95,10 @@ export async function getPostBySlug(slug: string): Promise<Post> {
 		metadata: {
 			title: data.title,
 			date: Date.parse(data.date),
-			url: `/p/${realSlug}`,
+			// the old site didn't have the date in the slugs, and I want to keep that SEO
+			url: `/p/${slugWithoutDate}`,
 			images: await imageExtractor(content),
+			datelessSlug: slugWithoutDate,
 		},
 		content,
 		excerpt: excerptExtractor(content),

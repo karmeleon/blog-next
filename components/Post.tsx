@@ -39,7 +39,7 @@ const InfoLine = styled.span`
 
 interface Props {
 	post: PostType;
-	isPreview: boolean;
+	isPreview?: boolean;
 }
 
 const Post = ({ post, isPreview }: Props) => {
