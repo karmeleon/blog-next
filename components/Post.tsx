@@ -10,9 +10,9 @@ const PostOuter = styled.section`
 	margin-bottom: 30px;
 
 	&:after {
-		content: " ";
-		display: block; 
-		height: 0; 
+		content: ' ';
+		display: block;
+		height: 0;
 		clear: both;
 	}
 `;
@@ -40,7 +40,7 @@ const InfoLine = styled.span`
 interface Props {
 	post: PostType;
 	isPreview: boolean;
-};
+}
 
 const Post = ({ post, isPreview }: Props) => {
 	const dateObject = new Date(post.metadata.date);
@@ -50,44 +50,41 @@ const Post = ({ post, isPreview }: Props) => {
 	if (isPreview) {
 		content = (
 			<>
-				<Markdown>
-					{post.excerpt}
-				</Markdown>
-				{post.excerpt !== post.content &&
-					<div css={css`text-align: center`}>
-						<H4><A href={post.metadata.url}>Full post</A></H4>
+				<Markdown>{post.excerpt}</Markdown>
+				{post.excerpt !== post.content && (
+					<div
+						css={css`
+							text-align: center;
+						`}
+					>
+						<H4>
+							<A href={post.metadata.url}>Full post</A>
+						</H4>
 					</div>
-				}
-				
+				)}
 			</>
 		);
 	} else {
-		content = (
-			<Markdown>
-				{post.content}
-			</Markdown>
-		);
+		content = <Markdown>{post.content}</Markdown>;
 	}
-	
+
 	return (
 		<PostOuter>
 			<PostOutline>
 				<PostContainer>
 					<Header>
-						<H3><A href={post.metadata.url}>{post.metadata.title}</A></H3>
+						<H3>
+							<A href={post.metadata.url}>{post.metadata.title}</A>
+						</H3>
 						<InfoLine>
-							<time dateTime={dateObject.toISOString()}>
-								{dateObject.toDateString()}
-							</time>
+							<time dateTime={dateObject.toISOString()}>{dateObject.toDateString()}</time>
 						</InfoLine>
 					</Header>
-					<article>
-						{content}
-					</article>
+					<article>{content}</article>
 				</PostContainer>
 			</PostOutline>
 		</PostOuter>
-	)
+	);
 };
 
 export default Post;

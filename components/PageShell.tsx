@@ -2,12 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import styled from '@emotion/styled';
 
-import {
-	Header,
-	mobileBreak,
-	smallBreak,
-	largeBreak,
-} from '../shared/styles';
+import { Header, mobileBreak, smallBreak, largeBreak } from '../shared/styles';
 import Sidebar from '../components/Sidebar';
 
 export const MainContainer = styled.div`
@@ -48,14 +43,14 @@ interface Props {
 	titlePrefix?: string;
 }
 
-export default function PageShell({children, titlePrefix}: Props) {
+export default function PageShell({ children, titlePrefix }: Props) {
 	return (
 		<>
 			<Head>
 				<title>{titlePrefix} Blog.</title>
-				<meta name="theme-color" content="#808080"/>
-				<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"/>
-				<link href='https://fonts.googleapis.com/css?family=Khand:400,600' rel='stylesheet' type='text/css'/>
+				<meta name="theme-color" content="#808080" />
+				<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+				<link href="https://fonts.googleapis.com/css?family=Khand:400,600" rel="stylesheet" type="text/css" />
 				<meta property="og:url" content="https://sha.wn.zone{{ request.get_full_path }}" />
 				<meta property="og:locale" content="en_US" />
 				<meta property="og:site_name" content="sha.wn.zone" />
@@ -64,13 +59,9 @@ export default function PageShell({children, titlePrefix}: Props) {
 				<link rel="icon" href="/favicon.png" />
 				{/** TODO: Google analytics, AMP maybe */}
 			</Head>
-			<Header>
-				fancy header square thingy goes here
-			</Header>
+			<Header>fancy header square thingy goes here</Header>
 			<MainContainer>
-				<ContentColumn>
-					{children}
-				</ContentColumn>
+				<ContentColumn>{children}</ContentColumn>
 				<Sidebar />
 			</MainContainer>
 		</>

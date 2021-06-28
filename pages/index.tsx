@@ -11,14 +11,16 @@ export const getStaticProps = async () => {
 	return {
 		props: {
 			posts,
-		}
+		},
 	};
 };
 
 export default function Home({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<PageShell>
-			{posts.map(post => <Post post={post} isPreview key={post.metadata.title} />)}
+			{posts.map((post) => (
+				<Post post={post} isPreview key={post.metadata.title} />
+			))}
 		</PageShell>
 	);
 }

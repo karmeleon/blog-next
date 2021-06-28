@@ -10,14 +10,14 @@ export interface PostMetadata {
 	// parse this with new Date()
 	date: number;
 	url: string;
-};
+}
 
 export interface Post {
 	metadata: PostMetadata;
 	// Raw Markdown text
 	content: string;
 	excerpt: string;
-};
+}
 
 // TODO: maybe find a type for this?
 function excerptExtractor(markdown: string): string {
@@ -39,7 +39,7 @@ export function getPostBySlug(slug: string): Post {
 	const fullPath = join(postsDirectory, `${realSlug}.md`);
 	const fileContents = fs.readFileSync(fullPath, 'utf8');
 	const { data, content } = matter(fileContents);
-  
+
 	return {
 		metadata: {
 			title: data.title,
