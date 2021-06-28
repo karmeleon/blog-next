@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
+import { css } from '@emotion/react';
+import Image from 'next/image';
 //import {dark} from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 interface Props {
@@ -23,6 +25,15 @@ const components = {
 				{children}
 			</code>
 		)
+	},
+	img({node, src}) {
+		// TODO: get the next image optimzation working
+		return <img src={src} css={css`
+			display: block;
+			max-width: 100%;
+			max-height: 100%;
+			margin: 0 auto;
+		`} />;
 	}
 };
 

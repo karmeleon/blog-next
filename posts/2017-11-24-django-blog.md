@@ -3,7 +3,7 @@ title: sha.wn.zone, now brought to you by Django!
 date: 2017-11-24
 ---
 
-![The Raspberry Pi you loaded this site from](/static/img/web_scale.jpg)
+![The Raspberry Pi you loaded this site from](/img/web_scale.jpg)
 *It's web-scale!*
 
 One fine morning, I decided I should get my own domain. I have friends with snappy domains like [denise.li](http://denise.li) and, despite my much-longer name, I was determined to snag a vanity domain for myself. After much scouring the internet, I grabbed wn.zone for the sick sh@wn.zone email address and [sha.wn.zone](https://sha.wn.zone) URL. I set up my Github Pages site to serve from the latter and ran into some issues. Of course, that left only one option: to rewrite the site from the ground up and host it myself. That's easier, right?

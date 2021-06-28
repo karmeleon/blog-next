@@ -4,7 +4,7 @@ title: What determines the wild encounter rate in Pokémon?
 date: 2020-4-3
 ---
 
-![An encounter in Pokémon Emerald](/static/img/Pokemon/title.webp)
+![An encounter in Pokémon Emerald](/img/Pokemon/title.webp)
 *Oh, come on.*
 
 I was playing through Pokémon Emerald recently, but got _really_ turned off by the sheer volume of random encounters. It was way higher than I remembered as a wee elementary school kid, but I couldn't find any hard data on how the encounter rate was determined. Not even on [Bulbapedia](https://bulbapedia.bulbagarden.net/wiki/Main_Page), a Pokémon wiki with ridiculously detailed documentation of every last aspect of every game.

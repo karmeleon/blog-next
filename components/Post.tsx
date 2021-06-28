@@ -54,7 +54,7 @@ const Post = ({ post, isPreview }: Props) => {
 					{post.excerpt}
 				</Markdown>
 				{post.excerpt !== post.content &&
-					<div style={css`text-align: center`}>
+					<div css={css`text-align: center`}>
 						<H4><A href={post.metadata.url}>Full post</A></H4>
 					</div>
 				}

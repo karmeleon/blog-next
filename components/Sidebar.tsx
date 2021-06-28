@@ -34,7 +34,7 @@ const Sidebar = () => (
 	<SidebarColumn>
 		<SidebarOutline>
 			<SidebarContent>
-				<H2 style={css`margin-top: 0`}>About</H2>
+				<H2 css={css`margin-top: 0`}>About</H2>
 				<P>
 				This is a blog I made to talk about programming type things that I find or write.
 				If you find the stuff here interesting, feel free to shoot me an email at

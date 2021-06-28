@@ -4,7 +4,7 @@ title: I take games way too seriously
 date: 2015-5-18
 ---
 
-![Klondike is hard](/static/img/klondike.png)
+![Klondike is hard](/img/klondike.png)
 
 So, I'm bad at Solitaire. Like, _really bad_. However, I'm good at writing code and just took an algorithms course this semester, so one afternoon I decided to make up for my complete lack of card game strategy with brute force. About twelve hours later, I had a working Klondike generator and solver. Unfortunately, it doesn't seem to solve many initial states, but I'm not sure if that's because my code is bad or because the shuffling routine I use is just really good at making unsolveable decks.
 

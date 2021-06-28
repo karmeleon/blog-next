@@ -56,7 +56,7 @@ Open-world games are traditionally heavy on the CPU, and Rockstar Games' most re
 
 (pls excuse the graphs not lining up, Google Sheets is a pain in the ass to work with)
 
-![GTAV frame times](/static/img/HT/GTAV.svg)
+![GTAV frame times](/img/HT/GTAV.svg)
 
 Hyperthreading caused some small, but measurable gains in mean FPS (4.00%), but a small increase in 99% frame times as well, manifesting in a "fuzzier" frame time graph (6.04%). I'm not sure what happened here, but it might be a result of only running one trial in the interest of time. The significantly increased IPC didn't really seem to affect much here.
 
@@ -71,7 +71,7 @@ Built on their proprietary Glacier engine, IO Interactive's return to the World 
 | 99% Frame Time | 15.90 ms | 19.05 ms |
 | IPC            | 4.92     | 3.26     |
 
-![HITMAN frame times](/static/img/HT/HITMAN.svg)
+![HITMAN frame times](/img/HT/HITMAN.svg)
 
 HITMAN loves its threads! Multithreading increased mean FPS by 16.76% and decreased 99% frame time by 16.53%, which is easily visible in the graphs as being much less noisy with HT on. IO's done a great job of designing its engine to scale with high thread count, and this densely-populated map makes the most of it.
 
@@ -86,7 +86,7 @@ Deus Ex: Mankind Divided is another Square Enix-published game, this time based 
 | 99% Frame Time | 15.94 ms | 17.46 ms |
 | IPC            | 3.424    | 2.532    |
 
-![Deus Ex: Mankind Divided frame times](/static/img/HT/DXMD.svg)
+![Deus Ex: Mankind Divided frame times](/img/HT/DXMD.svg)
 
 Activating HT boosted average FPS by 4.01%, but decreased 99% frame times by a much greater 8.70%. This change manifests itself in-game as somewhat decreased judder, though the improvement isn't as great as HITMAN's. This game doesn't seem to be as CPU-heavy as the previous two, so it makes sense that the extra threads won't help a whole lot.
 
