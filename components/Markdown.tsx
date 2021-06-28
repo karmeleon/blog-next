@@ -3,7 +3,9 @@ import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { css } from '@emotion/react';
 import Image from 'next/image';
-import { H1, H2, H3, H4, A, Hr } from '../shared/styles';
+import gfm from 'remark-gfm';
+import footnotes from 'remark-footnotes';
+import { H1, H2, H3, H4, A, Hr, Table, Blockquote } from '../shared/styles';
 import { ImageMap } from '../lib/post';
 //import {dark} from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -55,9 +57,15 @@ const Markdown = ({ children, images }: Props) => {
 		h4: H4,
 		a: A,
 		hr: Hr,
+		table: Table,
+		blockquote: Blockquote,
 	};
 
-	return <ReactMarkdown components={components}>{children}</ReactMarkdown>;
+	return (
+		<ReactMarkdown components={components} remarkPlugins={[gfm, footnotes]} skipHtml>
+			{children}
+		</ReactMarkdown>
+	);
 };
 
 export default Markdown;

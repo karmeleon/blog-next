@@ -85,8 +85,7 @@ export async function getPostByDatelessSlug(searchSlug: string): Promise<Post> {
 
 export async function getPostBySlug(slug: string): Promise<Post> {
 	const realSlug = slug.replace(/\.md$/, '');
-	// the old site didn't have the date in the slugs, and I want to keep that SEO
-	const slugWithoutDate = getDatelessSlug(realSlug);
+	const datelessSlug = getDatelessSlug(realSlug);
 	const fullPath = join(postsDirectory, `${realSlug}.md`);
 	const fileContents = fs.readFileSync(fullPath, 'utf8');
 	const { data, content } = matter(fileContents);
@@ -96,9 +95,9 @@ export async function getPostBySlug(slug: string): Promise<Post> {
 			title: data.title,
 			date: Date.parse(data.date),
 			// the old site didn't have the date in the slugs, and I want to keep that SEO
-			url: `/p/${slugWithoutDate}`,
+			url: `/p/${datelessSlug}`,
 			images: await imageExtractor(content),
-			datelessSlug: slugWithoutDate,
+			datelessSlug,
 		},
 		content,
 		excerpt: excerptExtractor(content),

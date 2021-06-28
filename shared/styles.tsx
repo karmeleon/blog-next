@@ -97,3 +97,38 @@ export const Hr = styled.hr`
 	border: 0;
 	border-top: 1px solid #eee;
 `;
+
+export const Table = styled.table`
+	width: 100%;
+	@media (min-width: ${mobileBreak}) {
+		width: 60%;
+	}
+	margin: 5px auto;
+	border-collapse: collapse;
+	border-spacing: 0px;
+
+	thead > tr {
+		background-color: ${outlineColor};
+		color: white;
+
+		th:not(:first-of-type) {
+			border-left: 1px solid white;
+		}
+	}
+
+	td {
+		background-color: whitesmoke;
+		border-bottom: 1px solid white;
+		border-right: 1px solid white;
+		padding: 4px;
+
+		&:first-of-type {
+			font-weight: bold;
+			background-color: lightgrey;
+		}
+	}
+`;
+
+export const Blockquote = styled.blockquote`
+	font-size: 1.1em;
+`;
