@@ -58,7 +58,7 @@ export default function PageShell({ children, titlePrefix }: Props) {
 		<>
 			<Head>
 				<title>{title}</title>
-				<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<meta property="og:url" content={`https://sha.wn.zone${router.asPath}`} />
 				<meta property="og:locale" content="en_US" />
 				<meta property="og:site_name" content="sha.wn.zone" />

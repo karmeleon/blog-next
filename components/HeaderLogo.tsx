@@ -46,7 +46,7 @@ export default function HeaderLogo() {
 			`}
 		>
 			<Link href="/" passHref>
-				<a>
+				<a title="Home">
 					<div className="outer-square">
 						<div className="square-rows">{squareSets}</div>
 						<div className="square-columns">{squareSets}</div>
