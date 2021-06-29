@@ -8,8 +8,4 @@ module.exports = {
 			},
 		];
 	},
-	typescript: {
-		// vercel sucks
-		ignoreBuildErrors: true,
-	},
 };
