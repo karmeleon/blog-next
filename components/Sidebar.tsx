@@ -37,7 +37,7 @@ const Sidebar = () => (
 				<P>
 					This is a blog I made to talk about programming type things that I find or write. If you find the
 					stuff here interesting, feel free to shoot me an email at <A href="mailto:sh@wn.zone">sh@wn.zone</A>{' '}
-					or take a look at <A href="https://karmeleon.github.io/assets/resume.html">my resumé</A> or{' '}
+					or take a look at <A href="/resume.pdf">my resumé</A> or{' '}
 					<A href="https://www.linkedin.com/in/shawn-walton-7582838a/">LinkedIn</A>! There are a few older
 					things on <A href="https://github.com/karmeleon">my Github</A> that I haven’t written about, so you
 					might as well go check that out too.
