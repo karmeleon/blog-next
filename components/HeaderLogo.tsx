@@ -1,4 +1,5 @@
 import React from 'react';
+import { css } from '@emotion/react';
 import Link from 'next/link';
 
 function range(num: number): Array<any> {
@@ -8,6 +9,7 @@ function range(num: number): Array<any> {
 }
 
 const SQUARES_PER_SIDE = 3;
+const OUTER_SIZE = 30 * 3 * Math.sqrt(2);
 
 export default function HeaderLogo() {
 	const squareSets = (
@@ -34,7 +36,15 @@ export default function HeaderLogo() {
 	);
 
 	return (
-		<div className="triangle-square-container">
+		<div
+			className="triangle-square-container"
+			// scss doesn't load with the page, so use Emotion to placehold for the logo
+			css={css`
+				width: ${OUTER_SIZE}px;
+				height: ${OUTER_SIZE}px;
+				margin: 0 auto;
+			`}
+		>
 			{/* eslint-disable-next-line @next/next/link-passhref */}
 			<Link href="/">
 				<div className="outer-square">
