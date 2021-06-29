@@ -45,10 +45,16 @@ interface Props {
 }
 
 export default function PageShell({ children, titlePrefix }: Props) {
+	let title;
+	if (titlePrefix != null) {
+		title = `${titlePrefix} | Blog.`;
+	} else {
+		title = 'Blog.';
+	}
 	return (
 		<>
 			<Head>
-				<title>{titlePrefix} Blog.</title>
+				<title>{title}</title>
 				<meta name="theme-color" content="#808080" />
 				<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 				<meta property="og:url" content="https://sha.wn.zone{{ request.get_full_path }}" />
