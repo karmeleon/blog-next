@@ -45,12 +45,13 @@ export default function HeaderLogo() {
 				margin: 0 auto;
 			`}
 		>
-			{/* eslint-disable-next-line @next/next/link-passhref */}
-			<Link href="/">
-				<div className="outer-square">
-					<div className="square-rows">{squareSets}</div>
-					<div className="square-columns">{squareSets}</div>
-				</div>
+			<Link href="/" passHref>
+				<a>
+					<div className="outer-square">
+						<div className="square-rows">{squareSets}</div>
+						<div className="square-columns">{squareSets}</div>
+					</div>
+				</a>
 			</Link>
 		</div>
 	);
