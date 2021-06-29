@@ -3,7 +3,8 @@ import Head from 'next/head';
 import styled from '@emotion/styled';
 
 import { Header, mobileBreak, smallBreak, largeBreak } from '../shared/styles';
-import Sidebar from '../components/Sidebar';
+import Sidebar from './Sidebar';
+import HeaderLogo from './HeaderLogo';
 
 export const MainContainer = styled.div`
 	width: 100%;
@@ -58,7 +59,9 @@ export default function PageShell({ children, titlePrefix }: Props) {
 				<link rel="icon" href="/favicon.png" />
 				{/** TODO: Google analytics, AMP maybe */}
 			</Head>
-			<Header>fancy header square thingy goes here</Header>
+			<Header>
+				<HeaderLogo />
+			</Header>
 			<MainContainer>
 				<ContentColumn>{children}</ContentColumn>
 				<Sidebar />
