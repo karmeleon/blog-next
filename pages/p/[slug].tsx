@@ -4,7 +4,6 @@ import { getAllPosts, getPostByDatelessSlug } from '../../lib/post';
 
 import PageShell from '../../components/PageShell';
 import Post from '../../components/Post';
-import Pager from '../../components/Pager';
 
 export const getStaticProps = async (context: GetStaticPropsContext) => {
 	const slug = context?.params?.slug;
