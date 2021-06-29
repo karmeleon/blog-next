@@ -8,4 +8,4 @@ date: 2018-1-19
 
 I couldn't sleep on an international flight so I made a bingo card generator for HITMAN 2016. The code quality is garbage, it's pretty ugly, and there's no fanfare when you win, but it's cool.
 
-## [Check it.](/hitman)
+## [Check it.](/hitman.html)

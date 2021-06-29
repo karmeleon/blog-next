@@ -9,7 +9,6 @@ import gfm from 'remark-gfm';
 import footnotes from 'remark-footnotes';
 import { H1, H2, H3, H4, A, Hr, Table, Blockquote } from '../shared/styles';
 import { ImageMap } from '../lib/post';
-//import {dark} from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 interface Props {
 	children: string;
@@ -21,12 +20,7 @@ const Markdown = ({ children, images }: Props) => {
 		code({ inline, className, children, ...props }) {
 			const match = /language-(\w+)/.exec(className || '');
 			return !inline && match ? (
-				<SyntaxHighlighter
-					//style={dark}
-					language={match[1]}
-					PreTag="div"
-					{...props}
-				>
+				<SyntaxHighlighter language={match[1]} PreTag="div" {...props}>
 					{String(children).replace(/\n$/, '')}
 				</SyntaxHighlighter>
 			) : (
