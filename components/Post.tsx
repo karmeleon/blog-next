@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
@@ -58,7 +59,9 @@ const Post = ({ post, isPreview }: Props) => {
 						`}
 					>
 						<H4>
-							<A href={post.metadata.url}>Full post &gt;</A>
+							<Link href={post.metadata.url} passHref>
+								<A>Full post &gt;</A>
+							</Link>
 						</H4>
 					</div>
 				)}
@@ -74,7 +77,9 @@ const Post = ({ post, isPreview }: Props) => {
 				<PostContainer>
 					<Header>
 						<H3>
-							<A href={post.metadata.url}>{post.metadata.title}</A>
+							<Link href={post.metadata.url} passHref>
+								<A>{post.metadata.title}</A>
+							</Link>
 						</H3>
 						<InfoLine>
 							<time dateTime={dateObject.toISOString()}>{dateObject.toDateString()}</time>

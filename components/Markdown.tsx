@@ -2,6 +2,7 @@
 // @ts-nocheck
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
+import Link from 'next/link';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { css } from '@emotion/react';
 import Image from 'next/image';
@@ -51,7 +52,13 @@ const Markdown = ({ children, images }: Props) => {
 		h2: H2,
 		h3: H3,
 		h4: H4,
-		a: A,
+		a({ href, ...props }) {
+			return (
+				<Link href={href} passHref>
+					<A {...props} />
+				</Link>
+			);
+		},
 		hr: Hr,
 		table: Table,
 		blockquote: Blockquote,
