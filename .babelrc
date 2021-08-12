@@ -6,6 +6,11 @@
 				"preset-react": {
 					"runtime": "automatic",
 					"importSource": "@emotion/react"
+				},
+				"preset-env": {
+					"useBuiltIns": false,
+					"targets": "last 2 chrome versions, last 2 firefox versions, last 2 safari versions, node 14",
+					"bugfixes": true
 				}
 			}
 		]
