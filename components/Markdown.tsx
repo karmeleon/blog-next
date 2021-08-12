@@ -1,6 +1,5 @@
 // the errors in react-markdown are impossible to understand, don't bother to try
 // @ts-nocheck
-import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import Link from 'next/link';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -10,6 +9,7 @@ import gfm from 'remark-gfm';
 import footnotes from 'remark-footnotes';
 import { H1, H2, H3, H4, A, Hr, Table, Blockquote, mobileBreak, smallBreak, largeBreak } from '../shared/styles';
 import { ImageMap } from '../lib/post';
+import PreloadImageContext from '../lib/imagePreload';
 
 interface Props {
 	children: string;
@@ -43,13 +43,18 @@ const Markdown = ({ children, images }: Props) => {
 						position: relative;
 					`}
 				>
-					<Image
-						sizes={`(max-width: ${mobileBreak}) 87vw, (max-width: ${smallBreak}) 451px, 596px`}
-						alt={alt}
-						placeholder="blur"
-						{...image}
-						{...props}
-					/>
+					<PreloadImageContext.Consumer>
+						{(shouldPreload) => (
+							<Image
+								sizes={`(max-width: ${mobileBreak}) 87vw, (max-width: ${smallBreak}) 451px, 596px`}
+								alt={alt}
+								placeholder="blur"
+								{...image}
+								{...props}
+								priority={shouldPreload}
+							/>
+						)}
+					</PreloadImageContext.Consumer>
 				</div>
 			);
 		},

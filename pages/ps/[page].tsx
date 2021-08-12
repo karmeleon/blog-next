@@ -45,8 +45,8 @@ export async function getStaticPaths() {
 export default function Page({ posts, totalPages, currentPage }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<PageShell>
-			{posts.map((post) => (
-				<Post post={post} isPreview key={post.metadata.title} />
+			{posts.map((post, idx) => (
+				<Post post={post} isPreview key={post.metadata.title} isAboveFold={idx === 0} />
 			))}
 			<Pager total={totalPages} current={currentPage} />
 		</PageShell>

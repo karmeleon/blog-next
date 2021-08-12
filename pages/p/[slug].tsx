@@ -34,7 +34,7 @@ export async function getStaticPaths() {
 export default function PostPage({ post }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<PageShell titlePrefix={post.metadata.title}>
-			<Post post={post} />
+			<Post post={post} isAboveFold />
 		</PageShell>
 	);
 }

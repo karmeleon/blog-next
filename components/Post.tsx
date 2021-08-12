@@ -5,6 +5,7 @@ import styled from '@emotion/styled';
 
 import { A, H3, H4, outlineColor } from '../shared/styles';
 import { Post as PostType } from '../lib/post';
+import PreloadImageContext from '../lib/imagePreload';
 import Markdown from './Markdown';
 
 const PostOuter = styled.section`
@@ -40,10 +41,11 @@ const InfoLine = styled.span`
 
 interface Props {
 	post: PostType;
-	isPreview?: boolean;
+	isPreview: boolean;
+	isAboveFold: boolean;
 }
 
-const Post = ({ post, isPreview }: Props) => {
+const Post = ({ post, isPreview, isAboveFold }: Props) => {
 	const dateObject = new Date(post.metadata.date);
 
 	let content;
@@ -72,24 +74,31 @@ const Post = ({ post, isPreview }: Props) => {
 	}
 
 	return (
-		<PostOuter>
-			<PostOutline>
-				<PostContainer>
-					<Header>
-						<H3>
-							<Link href={post.metadata.url} passHref>
-								<A>{post.metadata.title}</A>
-							</Link>
-						</H3>
-						<InfoLine>
-							<time dateTime={dateObject.toISOString()}>{dateObject.toDateString()}</time>
-						</InfoLine>
-					</Header>
-					<article>{content}</article>
-				</PostContainer>
-			</PostOutline>
-		</PostOuter>
+		<PreloadImageContext.Provider value={isAboveFold}>
+			<PostOuter>
+				<PostOutline>
+					<PostContainer>
+						<Header>
+							<H3>
+								<Link href={post.metadata.url} passHref>
+									<A>{post.metadata.title}</A>
+								</Link>
+							</H3>
+							<InfoLine>
+								<time dateTime={dateObject.toISOString()}>{dateObject.toDateString()}</time>
+							</InfoLine>
+						</Header>
+						<article>{content}</article>
+					</PostContainer>
+				</PostOutline>
+			</PostOuter>
+		</PreloadImageContext.Provider>
 	);
+};
+
+Post.defaultProps = {
+	isAboveFold: false,
+	isPreview: false,
 };
 
 export default Post;
