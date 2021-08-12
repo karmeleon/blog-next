@@ -24,11 +24,6 @@ export const MainContainer = styled.div`
 		width: 970px;
 		flex-direction: row;
 	}
-
-	@media (min-width: ${largeBreak}) {
-		width: 1170px;
-		flex-direction: row;
-	}
 `;
 
 export const ContentColumn = styled.div`

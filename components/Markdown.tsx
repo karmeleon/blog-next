@@ -8,7 +8,7 @@ import { css } from '@emotion/react';
 import Image from 'next/image';
 import gfm from 'remark-gfm';
 import footnotes from 'remark-footnotes';
-import { H1, H2, H3, H4, A, Hr, Table, Blockquote } from '../shared/styles';
+import { H1, H2, H3, H4, A, Hr, Table, Blockquote, mobileBreak, smallBreak, largeBreak } from '../shared/styles';
 import { ImageMap } from '../lib/post';
 
 interface Props {
@@ -41,10 +41,15 @@ const Markdown = ({ children, images }: Props) => {
 						max-height: 100%;
 						margin: 0 auto;
 						position: relative;
-						width: fit-content;
 					`}
 				>
-					<Image alt={alt} placeholder="blur" {...image} {...props} />
+					<Image
+						sizes={`(max-width: ${mobileBreak}) 87vw, (max-width: ${smallBreak}) 451px, 596px`}
+						alt={alt}
+						placeholder="blur"
+						{...image}
+						{...props}
+					/>
 				</div>
 			);
 		},
