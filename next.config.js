@@ -9,7 +9,8 @@ module.exports = {
 	reactStrictMode: true,
 	swcMinify: true,
 	images: {
-		formats: ['image/avif', 'image/webp'],
+		// TODO: enable avif once it supports animations
+		formats: ['image/webp'],
 	},
 	async rewrites() {
 		return [
