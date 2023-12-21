@@ -132,7 +132,7 @@ Once the game has decided to throw something at us, it generates the wild Pokém
 
 As a fun aside, there's only one Surfing encounter table for the whole game! It's populated entirely with Tentacool, with levels ranging from 5 to 40. A quick peek at Yellow shows that Game Freak realized how boring this was, introducing different water encounter tabels for different maps in that game.
 
-Let's touch on fishing real quick, too. The Old Rod will always hook a level 5 Magikarp. The Good Rod has a 50% chance to catch something, chosen from a small, static list of encounters. Finally, the Super Rod also has a 50% chance to catch something, and this time it has a per-map encounter table.
+Let's touch on fishing real quick, too. The Old Rod will always hook a level 5 Magikarp. The Good Rod has a one-in-three chance to catch something, chosen from a small, static list of encounters. Finally, the Super Rod also has a 50% chance to catch something, and this time it has a per-map encounter table.
 
 That's, uh, that's it. Those are the only random wild encounters in the game. One more game to go!
 
