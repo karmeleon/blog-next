@@ -27,9 +27,7 @@ const Pager = ({ current, total }: Props) => {
 		// Render the first page URL as "/" instead of "/?page=0"
 		const path = current === 1 ? '/' : `/ps/${current - 1}`;
 		components.push(
-			<Link href={path} key="prev" passHref>
-				<A>&lt;</A>
-			</Link>,
+			<A href={path} key="prev">&lt;</A>
 		);
 	}
 	for (let i = 0; i < total; i++) {
@@ -37,25 +35,19 @@ const Pager = ({ current, total }: Props) => {
 			components.push(<span key="current">{i + 1}</span>);
 		} else if (i === 0) {
 			components.push(
-				<Link href="/" key="/" passHref>
-					<A>{i + 1}</A>
-				</Link>,
+				<A href="/" key="/">{i + 1}</A>
 			);
 		} else {
 			const path = `/ps/${i}`;
 			components.push(
-				<Link href={path} key={path} passHref>
-					<A>{i + 1}</A>
-				</Link>,
+				<A href={path} key={path}>{i + 1}</A>
 			);
 		}
 	}
 	if (current !== total - 1) {
 		const path = `/ps/${current + 1}`;
 		components.push(
-			<Link href={path} key="next" passHref>
-				<A>&gt;</A>
-			</Link>,
+			<A href={path} key="next">&gt;</A>
 		);
 	}
 

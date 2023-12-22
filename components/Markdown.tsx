@@ -34,7 +34,7 @@ const Markdown = ({ children, images }: Props) => {
 			const image = images[src];
 
 			return (
-				<div
+				<span
 					css={css`
 						display: block;
 						max-width: 100%;
@@ -55,7 +55,7 @@ const Markdown = ({ children, images }: Props) => {
 							/>
 						)}
 					</PreloadImageContext.Consumer>
-				</div>
+				</span>
 			);
 		},
 		h1: H1,
@@ -64,9 +64,7 @@ const Markdown = ({ children, images }: Props) => {
 		h4: H4,
 		a({ href, ...props }) {
 			return (
-				<Link href={href} passHref>
-					<A {...props} />
-				</Link>
+				<A href={href} {...props} />
 			);
 		},
 		hr: Hr,

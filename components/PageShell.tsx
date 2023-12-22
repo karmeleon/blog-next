@@ -1,5 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
+import Script from 'next/script';
 import { useRouter } from 'next/router';
 import styled from '@emotion/styled';
 
@@ -59,8 +60,8 @@ export default function PageShell({ children, titlePrefix }: Props) {
 				<meta property="og:site_name" content="sha.wn.zone" />
 				<meta property="fb:app_id" content="2021111818111122" />
 				<link rel="icon" href="/favicon.png" />
-				<script async src="https://www.googletagmanager.com/gtag/js?id=UA-109571230-1"></script>
-				<script
+				<Script async src="https://www.googletagmanager.com/gtag/js?id=UA-109571230-1"/>
+				<Script
 					dangerouslySetInnerHTML={{
 						__html: `
 							window.dataLayer = window.dataLayer || [];

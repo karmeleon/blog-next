@@ -45,13 +45,11 @@ export default function HeaderLogo() {
 				margin: 0 auto;
 			`}
 		>
-			<Link href="/" passHref>
-				<a title="Home">
-					<div className="outer-square">
-						<div className="square-rows">{squareSets}</div>
-						<div className="square-columns">{squareSets}</div>
-					</div>
-				</a>
+			<Link href="/" passHref title="Home">
+				<div className="outer-square">
+					<div className="square-rows">{squareSets}</div>
+					<div className="square-columns">{squareSets}</div>
+				</div>
 			</Link>
 		</div>
 	);

@@ -1,5 +1,6 @@
 import { css, Global } from '@emotion/react';
 import styled from '@emotion/styled';
+import Link from 'next/link';
 
 export const mobileBreak = '768px';
 export const smallBreak = '992px';
@@ -68,7 +69,7 @@ export const H4 = styled.h4`
 	padding-top: 5px;
 `;
 
-export const A = styled.a`
+export const A = styled(Link)`
 	color: #428bca;
 	text-decoration: none;
 

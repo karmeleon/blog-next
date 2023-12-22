@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
@@ -46,7 +45,12 @@ interface Props {
 }
 
 const Post = ({ post, isPreview, isAboveFold }: Props) => {
+	const [isLoaded, setIsLoaded] = React.useState(false);
+
+	React.useEffect(() => setIsLoaded(true), []);
+
 	const dateObject = new Date(post.metadata.date);
+	const dateString = isLoaded ? dateObject.toDateString() : '...loading...';
 
 	let content;
 
@@ -61,9 +65,7 @@ const Post = ({ post, isPreview, isAboveFold }: Props) => {
 						`}
 					>
 						<H4>
-							<Link href={post.metadata.url} passHref>
-								<A>Full post &gt;</A>
-							</Link>
+							<A href={post.metadata.url}>Full post &gt;</A>
 						</H4>
 					</div>
 				)}
@@ -80,12 +82,10 @@ const Post = ({ post, isPreview, isAboveFold }: Props) => {
 					<PostContainer>
 						<Header>
 							<H3>
-								<Link href={post.metadata.url} passHref>
-									<A>{post.metadata.title}</A>
-								</Link>
+								<A href={post.metadata.url}>{post.metadata.title}</A>
 							</H3>
 							<InfoLine>
-								<time dateTime={dateObject.toISOString()}>{dateObject.toDateString()}</time>
+								<time dateTime={dateObject.toISOString()}>{dateString}</time>
 							</InfoLine>
 						</Header>
 						<article>{content}</article>
