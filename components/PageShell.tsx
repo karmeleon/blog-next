@@ -4,6 +4,7 @@ import Script from 'next/script';
 import { useRouter } from 'next/router';
 import styled from '@emotion/styled';
 import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import { Header, mobileBreak, smallBreak, largeBreak } from '../shared/styles';
 import Sidebar from './Sidebar';
@@ -81,7 +82,8 @@ export default function PageShell({ children, titlePrefix }: Props) {
 				<ContentColumn>{children}</ContentColumn>
 				<Sidebar />
             </MainContainer>
-			<Analytics />
+            <Analytics />
+			<SpeedInsights />
 		</>
 	);
 }
