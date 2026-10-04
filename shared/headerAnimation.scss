@@ -1,3 +1,4 @@
+@use "sass:color";
 @use "sass:math";
 // SCSS for the triangle/square logo at the top of the page.
 // The raw output for this file is large (somewhere around 47KB), but it compresses extremely well
@@ -82,7 +83,7 @@ $animation-longest-length: $animation-delay-step * $num-squares + $animation-fin
 	.square-sets-left {
 		position: absolute;
 	}
-	
+
 	.square-columns {
 		transform: rotate(-90deg);
 	}
@@ -98,16 +99,16 @@ $animation-longest-length: $animation-delay-step * $num-squares + $animation-fin
 
 	// generate a color for a square
 	@function square-color($transparency) {
-		@return transparentize(black, custom-clamp($transparency, 0, 1));
+		@return color.adjust(black, $alpha: -(custom-clamp($transparency, 0, 1)));
 	}
 
 	@function custom-clamp($value, $min, $max) {
-		@return if($value > $max, $max, if($value < $min, $min, $value));
+		@return if(sass($value > $max): $max; else: if(sass($value < $min): $min; else: $value));
 	}
 
 	// randomly increase/decrease a $number by at most $variance-factor times
 	@function randomly-vary-number($number, $variance-factor) {
-		@return $number * (1 + $variance-factor * (random() * 2 - 1));
+		@return $number * (1 + $variance-factor * (math.random() * 2 - 1));
 	}
 
 	// compute the name of an animation for a square
@@ -117,16 +118,16 @@ $animation-longest-length: $animation-delay-step * $num-squares + $animation-fin
 
 	// generate the keyframes for a single square
 	@mixin square-animation-for-side($random-number, $side) {
-		$base-transparency: random() * 0.4 + 0.5;
+		$base-transparency: math.random() * 0.4 + 0.5;
 		$base-color: square-color($base-transparency);
-		
+
 		@keyframes #{animation-name($random-number, $side)} {
 			0% {
 				border-#{$side}-color: $base-color;
 			}
 
 			@for $stop from 1 through 3 {
-				#{percentage(randomly-vary-number(.25 * $stop, 0.15))} {
+				#{math.percentage(randomly-vary-number(.25 * $stop, 0.15))} {
 					border-#{$side}-color: square-color(randomly-vary-number($base-transparency, 0.1));
 				}
 			}
@@ -149,7 +150,7 @@ $animation-longest-length: $animation-delay-step * $num-squares + $animation-fin
 
 				// figure out the colors + color animations
 				// not guaranteed to be totally unique, but close enough
-				$animation-number: random(1000) + $i * 1000;
+				$animation-number: math.random(1000) + $i * 1000;
 				// generate colors and color keyframes
 				@include square-animation-for-side($animation-number, $side);
 				// make color animation
@@ -196,7 +197,7 @@ $animation-longest-length: $animation-delay-step * $num-squares + $animation-fin
 		// triangles are "pushed" away from the center a distance directly proportional
 		// to distance from this center.
 		$i-distance: $i - $center-coordinate - 0.5;
-		$j-distance: $j - $center-coordinate - if($side == left, 0.75, 0.25);
+		$j-distance: $j - $center-coordinate - if(sass($side == left): 0.75; else: 0.25);
 		transform: translateY($i-distance * $max-hover-expand-amount * $sqrt-2) translateX($j-distance * $max-hover-expand-amount * $sqrt-2);
 	}
 
@@ -208,7 +209,7 @@ $animation-longest-length: $animation-delay-step * $num-squares + $animation-fin
 					& > .square-left:nth-child(#{$j}) {
 						@include hover-translation-amount($i, $j, left);
 					}
-					
+
 					& > .square-right:nth-child(#{$j}) {
 						@include hover-translation-amount($i, $j, right);
 					}

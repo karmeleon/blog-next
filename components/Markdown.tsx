@@ -6,7 +6,6 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { css } from '@emotion/react';
 import Image from 'next/image';
 import gfm from 'remark-gfm';
-import footnotes from 'remark-footnotes';
 import { H1, H2, H3, H4, A, Hr, Table, Blockquote, mobileBreak, smallBreak, largeBreak } from '../shared/styles';
 import { ImageMap } from '../lib/post';
 import PreloadImageContext from '../lib/imagePreload';
@@ -46,9 +45,8 @@ const Markdown = ({ children, images }: Props) => {
 					<PreloadImageContext.Consumer>
 						{(shouldPreload) => (
 							<Image
-								sizes={`(max-width: ${mobileBreak}) 87vw, (max-width: ${smallBreak}) 451px, 596px`}
 								alt={alt}
-								placeholder="blur"
+                                placeholder="blur"
 								{...image}
 								{...props}
 								priority={shouldPreload}
@@ -73,7 +71,7 @@ const Markdown = ({ children, images }: Props) => {
 	};
 
 	return (
-		<ReactMarkdown components={components} remarkPlugins={[gfm, footnotes]} skipHtml>
+		<ReactMarkdown components={components} remarkPlugins={[gfm]} skipHtml>
 			{children}
 		</ReactMarkdown>
 	);

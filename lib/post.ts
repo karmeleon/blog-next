@@ -1,7 +1,10 @@
-import fs from 'fs';
-import { join } from 'path';
+import fs from 'node:fs';
+import fsPromises from 'node:fs/promises';
+import { join, resolve } from 'node:path';
 import matter from 'gray-matter';
 import { getPlaiceholder } from 'plaiceholder';
+
+const COLUMN_WIDTH_PX = 596;
 
 const postsDirectory = join(process.cwd(), 'posts');
 
@@ -51,14 +54,18 @@ function excerptExtractor(markdown: string): string {
 async function imageExtractor(markdown: string): Promise<{ [key: string]: Image }> {
 	const output: { [key: string]: Image } = {};
 	for (const match of markdown.matchAll(imageExtractionRegex)) {
-		const path = match[1];
-		const { base64, img } = await getPlaiceholder(`${path}`);
+        const path = match[1];
+        const resolvedPath = join(process.cwd(), './public/', path);
+        const data = await fsPromises.readFile(resolvedPath);
+        const { base64, metadata: img } = await getPlaiceholder(data);
+        const aspectRatio = img.height / img.width; // 1080 / 1920 = 0.5625
+        const clampedHeight = COLUMN_WIDTH_PX * aspectRatio;  // 0.5625 * 1280 = 720
 		output[path] = {
-			src: img.src,
-			width: img.width,
-			height: img.height,
+			src: path,
+			width: COLUMN_WIDTH_PX,
+			height: clampedHeight,
 			blurDataURL: base64,
-		};
+        };
 	}
 	return output;
 }
@@ -88,7 +95,7 @@ export async function getPostBySlug(slug: string): Promise<Post> {
 	const datelessSlug = getDatelessSlug(realSlug);
 	const fullPath = join(postsDirectory, `${realSlug}.md`);
 	const fileContents = fs.readFileSync(fullPath, 'utf8');
-	const { data, content } = matter(fileContents);
+    const { data, content } = matter(fileContents);
 
 	return {
 		metadata: {

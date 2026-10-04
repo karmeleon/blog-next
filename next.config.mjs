@@ -1,3 +1,4 @@
+// @ts-check
 const securityHeaders = [
 	{
 		key: 'X-Content-Type-Options',
@@ -5,9 +6,9 @@ const securityHeaders = [
 	},
 ];
 
-module.exports = {
+/** @type {import('next').NextConfig} */
+export default {
 	reactStrictMode: true,
-	swcMinify: true,
 	images: {
 		// TODO: enable avif once it supports animations
 		formats: ['image/webp'],
